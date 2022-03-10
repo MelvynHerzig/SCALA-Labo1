@@ -39,7 +39,7 @@ class SpellCheckerImpl(val dictionary: Map[String, String]) extends SpellChecker
           val l1 = levenshteinDist(sa, sb, aLen - 1, bLen)
           val l2 = levenshteinDist(sa, sb, aLen, bLen - 1)
           val l3 = levenshteinDist(sa, sb, aLen - 1, bLen - 1)
-          val d = if (sa.slice(aLen - 1, aLen - 1 + 1) == sb.slice(bLen - 1, bLen - 1 + 1)) 0 else 1
+          val d = if (sa.slice(aLen - 1, aLen ) == sb.slice(bLen - 1, bLen )) 0 else 1
           (l1+1).min(l2+1).min(l3+d)
 
     levenshteinDist(s1, s2, -1, -1)
