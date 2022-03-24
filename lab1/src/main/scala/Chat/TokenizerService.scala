@@ -3,6 +3,8 @@ package Chat
 import Chat.Token.*
 import Utils.SpellCheckerService
 
+import scala.language.postfixOps
+
 class TokenizerService(spellCheckerSvc: SpellCheckerService):
 
 
@@ -34,13 +36,12 @@ class TokenizerService(spellCheckerSvc: SpellCheckerService):
   def tokenize(input: String): Tokenized =
     val words = input.replaceAll("[.,!?*]", "").replaceAll("[']", " ").split(" ")
 
-    val tokens : Array[(String, Token)] = Array()
+    var tokens : Array[(String, Token)] = Array()
 
     for word <- words do
       val realWord : String = spellCheckerSvc.getClosestWordInDictionary(word)
       print("word: " + word + " realWord " + realWord)
-      //tokens :+ (realWord, getCorrespondingToken(realWord))
-      val l = (realWord, getCorrespondingToken(realWord)))
+      tokens = tokens :+ (realWord, getCorrespondingToken(realWord))
 
     TokenizedImpl(tokens)
   end tokenize
