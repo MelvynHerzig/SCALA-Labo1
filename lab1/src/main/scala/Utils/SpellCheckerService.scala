@@ -45,7 +45,7 @@ end SpellCheckerService
 class SpellCheckerImpl(val dictionary: Map[String, String]) extends SpellCheckerService :
   
   def isNumber(s: String): Boolean =
-    s.matches("[+-]?\\d+.?\\d+")
+    s.matches("[+-]?\\d?\\d+")
   
   def isPseudonym(s: String): Boolean =
     s != "" && s.charAt(0) == '_'
