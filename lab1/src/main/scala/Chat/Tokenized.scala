@@ -11,6 +11,21 @@ trait Tokenized:
   def nextToken(): (String, Token)
 
 class TokenizedImpl(val tokens: Array[(String, Token)]) extends Tokenized:
-  // TODO - Part 1 Step 3
-  def nextToken(): (String, Token) = ???
+
+  /**
+    * Index that indicates which is next token index to return when nextToken is called.
+    */
+  private var index = -1;
+
+  def nextToken(): (String, Token) =
+
+    index += 1
+    
+    // If not every token have been returned
+    if index < tokens.length then
+      tokens(index)
+    else
+      ("EOL", Token.EOL)
+  end nextToken
+
 end TokenizedImpl

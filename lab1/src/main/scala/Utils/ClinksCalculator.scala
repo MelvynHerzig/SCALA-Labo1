@@ -11,8 +11,9 @@ object ClinksCalculator:
     * @param n the number to compute
     * @return n!
     */
-  // TODO - Part 1 Step 1
   def factorial(n: Int): BigInt =
+  
+    // Transformation into tail recursive function
     @tailrec
     def iter(x: Int, result: BigInt): BigInt =
       if (x == 0 ) result
@@ -28,6 +29,8 @@ object ClinksCalculator:
     * @param k the second number
     * @return n choose k
     */
-  // TODO - Part 1 Step 1
-  def calculateCombination(n: Int, k: Int): BigInt = factorial(n) / (factorial(k) * factorial(n-k))
+  def calculateCombination(n: Int, k: Int): BigInt = 
+    factorial(n) / (factorial(k) * factorial(n-k))
+  end calculateCombination
+  
 end ClinksCalculator
